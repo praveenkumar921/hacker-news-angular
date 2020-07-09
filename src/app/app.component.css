@@ -1,0 +1,48 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    text-align: left;
+    padding: 8px;
+  }
+  a {color: black;} 
+
+  a:link {
+    text-decoration: none;
+  }
+  
+  a:visited {
+    text-decoration: none;
+    color: black;
+  }
+  
+  a:hover {
+    color: blue; 
+  }
+  
+  a:active {
+    text-decoration: underline;
+  }
+  
+  .dataValue{
+    margin: auto;
+    width: 50%;
+  }
+
+  .sorting {
+      display: flex;
+      justify-content: space-around;
+  }
+  .viewport {
+    height: 90vh;
+    width: 70vw;
+  }
+
+  .example-sidenav {
+    padding: 2%;
+    height: 50vh;
+    background-color: #8d8e94;
+}

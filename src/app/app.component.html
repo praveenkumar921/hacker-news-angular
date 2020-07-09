@@ -1,0 +1,52 @@
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <span class="navbar-brand">News</span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+     
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" #myInput (input)="filterItem(myInput.value)">
+       <span style="color: bisque;"><mat-icon matSuffix>search</mat-icon></span>
+      </form>
+    </div>
+  </nav>
+  
+<div class="dataValue">
+  <div class="sorting m-2">
+    <div>
+      <span style="cursor: pointer;" (click)="sortByScore()">
+        <mat-icon *ngIf="sortScoreAssending">arrow_upward</mat-icon>
+        <mat-icon *ngIf="!sortScoreAssending">arrow_downward</mat-icon>
+        sort by score
+      </span>
+    </div>
+    <div>
+      <span style="cursor: pointer;" (click)="sortByDate()">
+        <mat-icon *ngIf="sortdateAssending">arrow_upward</mat-icon>
+        <mat-icon *ngIf="!sortdateAssending">arrow_downward</mat-icon>
+        sort by date and time
+
+      </span>
+    </div>
+  </div>
+  <cdk-virtual-scroll-viewport [itemSize]="50" class="viewport m-3">
+    <div class="m-1" *cdkVirtualFor="let item of articlesByID">
+      <span class="badge badge-pill badge-secondary "><a href="{{item.url}}" target="_blank">
+        <td>{{item.title}}</td>
+      </a></span>
+      <!-- <table>
+        <tr>
+          <a href="{{item.url}}" target="_blank">
+            <td>{{item.title}}</td>
+          </a>
+        </tr>
+      </table>  -->
+        </div>
+  </cdk-virtual-scroll-viewport>
+</div>
+</div>
