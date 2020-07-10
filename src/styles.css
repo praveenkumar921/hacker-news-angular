@@ -3,3 +3,13 @@
 html, body { height: 100%;
     overflow: hidden; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.viewport {
+    height: 90vh;
+    width: 98vw!important;
+  }
+
+  .dataValue{
+    margin: auto;
+    width: 100%!important;
+  }
