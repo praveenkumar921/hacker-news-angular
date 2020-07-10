@@ -8,11 +8,13 @@ export class HackerNewsService {
 
   constructor(private http: HttpClient) { }
 
-  topStories() {
+// To get top stories id's from remote
+  public topStories() {
     return this.http.get('https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty');
   }
-  // https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty
-  getArticlesByID(id: number) {
+
+// To get stories based on id's from remote
+  public getArticlesByID(id: number) {
     return this.http.get('https://hacker-news.firebaseio.com/v0/item/' + id + '.json?print=pretty');
   }
 }

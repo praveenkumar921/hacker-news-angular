@@ -16,41 +16,43 @@ export class AppComponent implements OnInit {
   constructor(public hackerNewsService: HackerNewsService) { }
 
   ngOnInit() {
+    // To validate local storage data weather empty or not and store data from local storage.
     this.topStoriesId = JSON.parse(localStorage.getItem('storiesId'));
     this.articlesByID = JSON.parse(localStorage.getItem('articlesByID'));
     this.fetchIds();
-    console.log('this.topStoriesId-out', this.topStoriesId);
-    console.log('this.articlesByID-out', this.articlesByID);
-    
   }
-  public fetchIds() {
+
+// To fetch id's from remote with top stores api and store the data in local storage.
+  public fetchIds(): void {
     if (!this.topStoriesId) {
-      this.hackerNewsService.topStories().subscribe((data) => {
+      this.hackerNewsService.topStories().subscribe((data: any) => {
         this.topStoriesId = data;
         localStorage.setItem('storiesId', JSON.stringify(this.topStoriesId));
-        console.log('initArticles', data);
         this.fetchArticalByIds();
       });
     }
   }
-  public fetchArticalByIds() {
+
+// To fetch articales bases on id's fetched from top stores api and store data to local storage.
+  public fetchArticalByIds(): void {
     if (!this.articlesByID || this.articlesByID?.length === 0) {
       this.articlesByID = [];
-      console.log('this.topStoriesId', this.topStoriesId);
       if (this.topStoriesId) {
         this.topStoriesId.forEach((id) => {
           this.hackerNewsService.getArticlesByID(id).subscribe((data: any) => {
             this.articlesByID.push(data);
             localStorage.setItem('articlesByID', JSON.stringify(this.articlesByID));
+            this.articlesByID = [...this.articlesByID];
           });
         });
       }
     }
   }
-  
-  public sortByScore() {
+
+// To sort the data based on score in ascending and descending order.
+  public sortByScore(): void {
     if (this.sortScoreAssending) {
-    this.articlesByID.sort((a, b) => (a.score < b.score) ? 1 : -1);
+      this.articlesByID.sort((a, b) => (a.score < b.score) ? 1 : -1);
     } else {
       this.articlesByID.sort((a, b) => (a.score > b.score) ? 1 : -1);
     }
@@ -58,7 +60,8 @@ export class AppComponent implements OnInit {
     this.articlesByID = [...this.articlesByID];
   }
 
-  public sortByDate() {
+// To sort the data based on date and time in ascending and descending order.
+  public sortByDate(): void {
     if (this.sortdateAssending) {
       this.articlesByID.sort((a, b) => (a.time < b.time) ? 1 : -1);
     } else {
@@ -66,18 +69,20 @@ export class AppComponent implements OnInit {
     }
     this.sortdateAssending = !this.sortdateAssending;
     this.articlesByID = [...this.articlesByID];
-    }
+  }
 
-    public filterItem(value) {
-      console.log('value', value);
-      if (!value) {
-        this.assignCopy();
-      }
-      this.articlesByID = Object.assign([], JSON.parse(localStorage.getItem('articlesByID'))).filter(
-        item => item.title.toLowerCase().indexOf(value.toLowerCase()) > -1
-      );
+// To filter data based on user search.
+  public filterItem(value): void {
+    if (!value) {
+      this.assignCopy();
     }
-    public assignCopy() {
-      this.articlesByID = Object.assign([], JSON.parse(localStorage.getItem('articlesByID')));
-    }
+    this.articlesByID = Object.assign([], JSON.parse(localStorage.getItem('articlesByID'))).filter(
+      item => item.title.toLowerCase().indexOf(value.toLowerCase()) > -1
+    );
+  }
+
+// assign the origanl data if nothing is searched.
+  public assignCopy(): void {
+    this.articlesByID = Object.assign([], JSON.parse(localStorage.getItem('articlesByID')));
+  }
 }

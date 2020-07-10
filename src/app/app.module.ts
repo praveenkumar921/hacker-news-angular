@@ -5,10 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HackerNewsService } from './hacker-news.service';
 import {MatIconModule} from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {CdkScrollableModule} from '@angular/cdk/scrolling';
-import {ScrollingModule} from '@angular/cdk/scrolling';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import {CdkScrollableModule, ScrollingModule} from '@angular/cdk/scrolling';
 
 
 @NgModule({
@@ -22,8 +19,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     BrowserAnimationsModule,
     CdkScrollableModule,
     ScrollingModule,
-    MatToolbarModule,
-    MatFormFieldModule
   ],
   providers: [HackerNewsService],
   bootstrap: [AppComponent]

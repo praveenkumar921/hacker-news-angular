@@ -4,12 +4,18 @@ html, body { height: 100%;
     overflow: hidden; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.viewport {
-    height: 90vh;
-    width: 98vw!important;
-  }
+::-webkit-scrollbar {
+  width: 7px;
+}
 
-  .dataValue{
-    margin: auto;
-    width: 100%!important;
-  }
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #000;
+  border-radius: 10px;
+}

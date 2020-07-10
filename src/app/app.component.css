@@ -1,13 +1,4 @@
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  td, th {
-    text-align: left;
-    padding: 8px;
-  }
+
   a {color: black;} 
 
   a:link {
@@ -21,6 +12,7 @@ table {
   
   a:hover {
     color: blue; 
+    font-weight: 500;
   }
   
   a:active {
@@ -29,7 +21,7 @@ table {
   
   .dataValue{
     margin: auto;
-    width: 50%;
+    width: 100%;
   }
 
   .sorting {
@@ -37,12 +29,16 @@ table {
       justify-content: space-around;
   }
   .viewport {
-    height: 90vh;
-    width: 70vw;
+    height: 80vh;
+    width: 98vw;
   }
 
-  .example-sidenav {
-    padding: 2%;
-    height: 50vh;
-    background-color: #8d8e94;
-}
+  .sortIcon:hover {
+    color: blue; 
+    font-weight: 500;
+  }
+
+  .searchInput:hover {
+    background-color: #ebeef2;
+  }
+
